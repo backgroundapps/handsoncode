@@ -8,44 +8,58 @@
 			background-color: #000;
 			color: green;
 			border: none;
-
 		}	
-
 		#console {
 			background-color: rgb(240, 240, 240);
 			border: none;
-
 		}			
 		
 	</style>
-
 	<title>Grails em cinco minutos! </title>
 </head>
 
 <body>
-	
-	<textarea id="input" cols="100" rows="20" placeholder="Enter the command..." ></textarea> <a id="run" href="javascript:void(0)"><i class="fa fa-play-circle fa-3x"></i><br/>
-	<textarea id="console" cols="100" rows="10" placeholder="console..." ></textarea>
-
+	<iframe src="https://docs.google.com/presentation/d/1QipY1Q8XnUEIVicej9vHH29MnTw12WtHD4_SJFU-fzI/embed?start=false&loop=false&delayms=3000" frameborder="0" width="721" height="434" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe><br/>
+	<textarea id="input" cols="100" rows="15" placeholder="Enter the command..." ></textarea> <a id="run" href="javascript:void(0)"><i class="fa fa-play-circle fa-3x"></i><br/>
+	<textarea id="console" cols="100" rows="6" placeholder="console..." disabled></textarea>
 	<script type="text/javascript">
 		var runLink = document.getElementById('run'); 
-
 		runLink.addEventListener('click', processInput, false);
-
 		function processInput() {
 			var input = document.getElementById('input');
 			var console = document.getElementById('console');
 			if (!input.value) {
 				console.value = "Putz cara! Não sei ler mente... Insira algum comando!";
 			} else {
-				console.value = "Creating application...!\nApplication created with success!\n\nMuito bem Cara!";
-
+				inputList = input.value.split(' ');
+				if (inputList[0] != 'grails') {
+					console.value = "Acho que está faltando o comando principal meu chapa!";
+					return;
+				}
+				if (inputList.length == 1) {
+					console.value = "Muito bem... O comando principal você já conhece, mas o que você pretende fazer mesmo?";
+					return;
+				}else {
+					if (inputList[1] != 'create-app' ) {
+						console.value = "Hum... Tem certeza que é assim que criamos uma aplicação em Grails?";
+						return;
+					} 
+					if (inputList.length == 2 ) {
+						console.value = "Eita Cara! Estamos quase lá... Falta só o nome do projeto!";
+						return;
+					} 
+					if (inputList.length == 3 ) {
+						console.value = "Creating application...!\nApplication " + inputList[2] + " created with success!\n\nMuito bem Cara!";
+						return;
+					} 
+					if (inputList.length > 3 ) {
+						console.value = "Então... Eu sei que seria legal, mas o nome do projeto não pode conter espaços";
+						return;
+					} 
+				}	
+				console.value = "Putz!!! Tem alguma coisa errada... Melhor dar uma olhada com calma do seu código.";
 			}
-
-
-
 		}
-
 	</script>
 </body>
 </html>
