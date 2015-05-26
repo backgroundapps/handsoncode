@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+	<style type="text/css">
+		#input {
+			background-color: #000;
+			color: green;
+			border: none;
+
+		}	
+
+		#console {
+			background-color: rgb(240, 240, 240);
+			border: none;
+
+		}			
+		
+	</style>
+
+	<title>Grails em cinco minutos! </title>
+</head>
+
+<body>
+	
+	<textarea id="input" cols="100" rows="20" placeholder="Enter the command..." ></textarea> <a id="run" href="javascript:void(0)"><i class="fa fa-play-circle fa-3x"></i><br/>
+	<textarea id="console" cols="100" rows="10" placeholder="console..." ></textarea>
+
+	<script type="text/javascript">
+		var runLink = document.getElementById('run'); 
+
+		runLink.addEventListener('click', processInput, false);
+
+		function processInput() {
+			var input = document.getElementById('input');
+			var console = document.getElementById('console');
+			if (!input.value) {
+				console.value = "Putz cara! Não sei ler mente... Insira algum comando!";
+			} else {
+				console.value = "Creating application...!\nApplication created with success!\n\nMuito bem Cara!";
+
+			}
+
+
+
+		}
+
+	</script>
+</body>
+</html>
