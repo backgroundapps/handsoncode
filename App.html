@@ -9,6 +9,7 @@
 			color: green;
 			border: none;
 		}	
+
 		#console {
 			background-color: rgb(240, 240, 240);
 			border: none;
@@ -25,6 +26,7 @@
 	<script type="text/javascript">
 		var runLink = document.getElementById('run'); 
 		runLink.addEventListener('click', processInput, false);
+
 		function processInput() {
 			var input = document.getElementById('input');
 			var console = document.getElementById('console');
@@ -33,33 +35,49 @@
 			} else {
 				inputList = input.value.split(' ');
 				if (inputList[0] != 'grails') {
+					if(inputList[0] == 'grail') {
+						console.value = "Quase lá.. o comando é escrito no plural!";
+						return;
+					}else
 					console.value = "Acho que está faltando o comando principal meu chapa!";
 					return;
 				}
+
 				if (inputList.length == 1) {
 					console.value = "Muito bem... O comando principal você já conhece, mas o que você pretende fazer mesmo?";
 					return;
+
 				}else {
+
 					if (inputList[1] != 'create-app' ) {
 						console.value = "Hum... Tem certeza que é assim que criamos uma aplicação em Grails?";
 						return;
+
 					} 
+
 					if (inputList.length == 2 ) {
 						console.value = "Eita Cara! Estamos quase lá... Falta só o nome do projeto!";
 						return;
+
 					} 
+
 					if (inputList.length == 3 ) {
 						console.value = "Creating application...!\nApplication " + inputList[2] + " created with success!\n\nMuito bem Cara!";
 						return;
+
 					} 
+
 					if (inputList.length > 3 ) {
 						console.value = "Então... Eu sei que seria legal, mas o nome do projeto não pode conter espaços";
 						return;
+
 					} 
 				}	
 				console.value = "Putz!!! Tem alguma coisa errada... Melhor dar uma olhada com calma do seu código.";
+
 			}
 		}
+
 	</script>
 </body>
 </html>
