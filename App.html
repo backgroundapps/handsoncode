@@ -21,7 +21,7 @@
 
 <body>
 	<textarea id="input" cols="100" rows="20" placeholder="Enter the command..." ></textarea> <a id="run" href="javascript:void(0)"><i class="fa fa-play-circle fa-3x"></i><br/>
-	<textarea id="console" cols="100" rows="10" placeholder="console..." ></textarea>
+	<textarea id="console" cols="100" rows="10" placeholder="console..." disabled></textarea>
 	<script type="text/javascript">
 		var runLink = document.getElementById('run'); 
 		runLink.addEventListener('click', processInput, false);
@@ -55,8 +55,20 @@
 						return;
 
 					} 
+
+					if (inputList.length == 3 ) {
+						console.value = "Creating application...!\nApplication " + inputList[2] + " created with success!\n\nMuito bem Cara!";
+						return;
+
+					} 
+
+					if (inputList.length > 3 ) {
+						console.value = "Então... Eu sei que seria legal, mas o nome do projeto não pode conter espaços";
+						return;
+
+					} 
 				}	
-				console.value = "Creating application...!\nApplication " + inputList[2] + " created with success!\n\nMuito bem Cara!";
+				console.value = "Putz!!! Tem alguma coisa errada... Melhor dar uma olhada com calma do seu código.";
 
 			}
 		}
